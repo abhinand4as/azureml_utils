@@ -1,0 +1,4 @@
+$schema: https://azuremlschemas.azureedge.net/latest/model.schema.json
+name: yolov8n
+path: ../models/yolov8n.pt
+description: yolov8n pre-trained model

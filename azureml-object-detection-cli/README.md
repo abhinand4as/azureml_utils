@@ -1,22 +1,28 @@
 # Azure ML Object Detection CLI
 
-## Setup
-
-### Configure Defaults
+## Prerequisites
 
 ```bash
 az configure --defaults workspace=<your-workspace-name> group=<your-resource-group-name>
 ```
 
-### Create Environment
+## Setup
+
+### 1. Create Compute Cluster
+
+```bash
+az ml compute create -f azureml/compute.yaml
+```
+
+### 2. Create Environment
 
 ```bash
 az ml environment create -f azureml/environment.yaml
 ```
 
-## If No Quota Available for Serverless Run
+#### If no quota available for serverless image build
 
-Create a dedicated compute cluster for image builds:
+Create a dedicated cluster for image builds:
 
 ```bash
 az ml compute create \
@@ -27,7 +33,7 @@ az ml compute create \
   --max-instances 1
 ```
 
-Update the workspace to use this cluster for image builds:
+Point the workspace to use it:
 
 ```bash
 az ml workspace update \
@@ -36,14 +42,28 @@ az ml workspace update \
   --image-build-compute image-build-cluster
 ```
 
-Then create the environment:
+Then retry:
 
 ```bash
-az ml environment create -f environment.yaml
+az ml environment create -f azureml/environment.yaml
+# or with an explicit version
+az ml environment create -f azureml/environment.yaml --version 2
 ```
 
-Or with an explicit version:
+### 3. Register Dataset
 
 ```bash
-az ml environment create -f environment.yaml --version 2
+az ml data create -f azureml/dataset.yaml
+```
+
+### 4. Register Base Model
+
+```bash
+az ml model create -f azureml/model.yaml
+```
+
+## Run Training Job
+
+```bash
+az ml job create -f azureml/job.yaml
 ```

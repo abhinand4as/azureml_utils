@@ -1,0 +1,8 @@
+$schema: https://azuremlschemas.azureedge.net/latest/amlCompute.schema.json 
+name: od-train-cluster-cpu
+type: amlcompute
+size: Standard_D4s_v3 # Because in this example we are using a small training dataset I selected a small CPU instance. You need to choose a compute instance fitting your training resource requirements.
+min_instances: 0 # I recommend to always keep min_instances = 0 to avoid the cost of idling node.
+max_instances: 2
+idle_time_before_scale_down: 120 # Scale down idling node after 2 minutes.
+location: westus3 # You can the location that best fits you
