@@ -4,7 +4,7 @@ experiment_name: yolov8-experiment
 command: |
   sed -i "s|path:.*$|path: ${{ inputs.training_data }}|" custom-coco128.yaml
   # Train the model
-  yolo task=detect train data=custom-coco128.yaml model=${{ inputs.model_to_train }} epochs=3 project=${{ outputs.trained_model }} name=experiment
+  yolo task=detect train data=custom-coco128.yaml model=${{ inputs.model_to_train }} epochs=3 project=${{ outputs.trained_model }} name=.
 
 inputs:
   training_data:
@@ -21,4 +21,4 @@ outputs:
 code: ../train
 environment: azureml:yolov8-environment@latest
 compute: azureml:od-train-cluster-cpu
-display_name: hello-world-example
+display_name: yolov8-coco128-training-run03
