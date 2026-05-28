@@ -14,7 +14,7 @@ RUN apt-get update && \
 
 # Pin to a version with a working MLflow callback
 RUN pip install --no-cache-dir \
-    ultralytics==8.2.103 \
+    ultralytics==8.3.120 \
     azureml-mlflow==1.57.0 \
     mlflow==2.15.1
 
