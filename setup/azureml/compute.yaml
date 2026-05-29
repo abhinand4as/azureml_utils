@@ -1,0 +1,15 @@
+$schema: https://azuremlschemas.azureedge.net/latest/amlCompute.schema.json
+
+name: cpu-cluster
+type: amlcompute
+
+# VM size — Standard_D4s_v3 (4 vCPU, 16 GB RAM) is a good general-purpose default.
+# For GPU training replace with e.g. Standard_NC6s_v3.
+size: Standard_D4s_v3
+
+# Always keep min_instances at 0 to avoid idle-node costs.
+min_instances: 0
+max_instances: 4
+
+# Scale down idle nodes after 2 minutes.
+idle_time_before_scale_down: 120

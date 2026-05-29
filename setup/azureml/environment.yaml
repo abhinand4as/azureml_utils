@@ -1,0 +1,25 @@
+$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+
+name: base-python-environment
+description: Base Python 3.10 environment for Azure ML jobs.
+
+# Microsoft's official AzureML base image — Python 3.10, common ML libs pre-installed.
+# Swap for a custom Dockerfile build block if your project needs additional system packages:
+#
+#   build:
+#     path: ../../azureml-environment   # directory containing the Dockerfile
+#
+image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu22.04:latest
+
+conda_file:
+  name: base-python-env
+  channels:
+    - conda-forge
+    - defaults
+  dependencies:
+    - python=3.10
+    - pip
+    - pip:
+        - azureml-core
+        - azureml-mlflow
+        - mlflow

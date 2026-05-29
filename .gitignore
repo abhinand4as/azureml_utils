@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+
+# Model weights and datasets (large binary/data files)
+*.pt
+*.pth
+*.onnx
+datasets/
+models/
+
+# YOLO / training artefacts
+runs/
+.cometml-runs/
+_local_test/
+experiment_config.yaml
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

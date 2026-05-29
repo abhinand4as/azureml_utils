@@ -1,7 +1,6 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
-experiment_name: yolov8-experiment
-display_name: yolov8-coco128-training-run08
 
+code: ../train
 command: |
   sed -i "s|path:.*$|path: ${{ inputs.training_data }}|" custom-coco128.yaml
   yolo train \
@@ -24,6 +23,9 @@ outputs:
   trained_model:
     type: uri_folder
 
-code: ../train
+
 environment: azureml:yolov8-environment@latest
 compute: azureml:od-train-cluster-cpu
+
+experiment_name: yolov8-experiment
+display_name: yolov8-coco128-training-run08

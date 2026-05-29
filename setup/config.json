@@ -1,0 +1,9 @@
+{
+    "subscription_id": "00069229-bfd4-4b9b-9871-5fb492a4ac2f",
+    "resource_group": "aml-automation-rg",
+    "workspace_name": "mlw-mlops-dev-westus3",
+    "location": "westus3",
+
+    "compute_yaml": "setup/azureml/compute.yaml",
+    "environment_yaml": "setup/azureml/environment.yaml"
+}
